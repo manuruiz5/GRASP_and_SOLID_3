@@ -26,9 +26,12 @@ namespace Full_GRASP_And_SOLID
             recipe.AddStep(new Step(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120));
             recipe.AddStep(new Step(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60));
 
-            AllInOnePrinter printer = new AllInOnePrinter();
-            printer.PrintRecipe(recipe, Destination.Console);
-            printer.PrintRecipe(recipe, Destination.File);
+            AllInOnePrinter consolePrinter = new AllInOnePrinter(new ConsolePrinter());
+            consolePrinter.PrintRecipe(recipe);
+            AllInOnePrinter filePrinter = new AllInOnePrinter(new FilePrinter("Recipe.txt"));
+            filePrinter.PrintRecipe(recipe);
+
+
         }
 
         private static void PopulateCatalogs()
